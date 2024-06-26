@@ -35,7 +35,7 @@ candidateName = input.question("Enter your name: ");
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for (i = 0; i < questions.length; i++) {
+  for (let i = 0; i < questions.length; i++) {
     candidateAnswers[i] = input.question(questions[i]);
   }
 
@@ -45,18 +45,24 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for (j = 0; j < questions.length; j++) {
+ let percentage = 0;
+  for (let j = 0; j < questions.length; j++) {
   if (candidateAnswers[j].toString().toLowerCase() === correctAnswers[j].toString().toLowerCase()) {
+    percentage += (100 / questions.length);
   console.log(`Question ${[j + 1]} correct! You answered ${candidateAnswers[j]} and the answer is ${correctAnswers[j]}.`);
 } else {
+    percentage += 0;
   console.log(`Question ${[j + 1]} incorrect. You answered ${candidateAnswers[j]} but the correct answer is ${correctAnswers[j]}.`);
 }
   }
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
+  let grade = percentage;  //TODO 3.2 use this variable to calculate the candidates score.
+if (grade >= 80) {
+  console.log(`Congratulations! You passed with a score of ${grade}%.`)
+} else {
+  console.log(`Test failed. You only scored ${grade}%.`) 
+}
   return grade;
 }
 
